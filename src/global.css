@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+
+/* Create New Button Hover Effects */
+.create-new-button:hover img {
+  filter: brightness(0) saturate(100%) invert(78%) sepia(91%) saturate(2503%) hue-rotate(104deg) brightness(102%) contrast(101%);
+}
+
+/* Group Create Button Hover Effects - Green (#56ff7b) */
+.group-create-button:hover img {
+  filter: brightness(0) saturate(100%) invert(84%) sepia(58%) saturate(2701%) hue-rotate(85deg) brightness(118%) contrast(108%);
+}
+
+/* Echo Create Button Hover Effects - Cyan (#91ffff) */
+.echo-create-button:hover img {
+  filter: brightness(0) saturate(100%) invert(87%) sepia(32%) saturate(1549%) hue-rotate(149deg) brightness(108%) contrast(109%);
+}
+
+/* Email Copy Success Animation */
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) translateX(-50%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 2s ease-in-out forwards;
+}
+
+/* Insights Scrolling Animation */
+@keyframes scroll-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+  33% {
+    transform: translateY(-33.33%);
+  }
+  66% {
+    transform: translateY(-66.66%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-scroll-vertical {
+  animation: scroll-vertical 6s ease-in-out infinite;
+}
+
+/* Fluid Green Flow Animation */
+@keyframes fluidFlowDown {
+  0% {
+    background: linear-gradient(to bottom, #e5e5e5 0%, #e5e5e5 100%);
+  }
+  25% {
+    background: linear-gradient(to bottom, #34E618 0%, #e5e5e5 75%);
+  }
+  50% {
+    background: linear-gradient(to bottom, #34E618 0%, #34E618 50%, #e5e5e5 100%);
+  }
+  75% {
+    background: linear-gradient(to bottom, #34E618 0%, #34E618 100%);
+  }
+  100% {
+    background: linear-gradient(to bottom, #34E618 0%, #34E618 100%);
+  }
+}
+
+@keyframes fluidFlowUp {
+  0% {
+    background: linear-gradient(to bottom, #e5e5e5 0%, #e5e5e5 100%);
+  }
+  25% {
+    background: linear-gradient(to bottom, #e5e5e5 0%, #34E618 100%);
+  }
+  50% {
+    background: linear-gradient(to bottom, #e5e5e5 0%, #34E618 50%, #34E618 100%);
+  }
+  75% {
+    background: linear-gradient(to bottom, #34E618 0%, #34E618 100%);
+  }
+  100% {
+    background: linear-gradient(to bottom, #34E618 0%, #34E618 100%);
+  }
+}
+
+@keyframes circleActivate {
+  0% {
+    fill: #DAE3DC;
+    r: 5;
+  }
+  50% {
+    fill: #34E618;
+    r: 6;
+  }
+  100% {
+    fill: #34E618;
+    r: 5;
+  }
+}
+
+.fluid-line-top {
+  animation: fluidFlowDown 0.8s ease-in-out forwards;
+}
+
+.fluid-line-bottom {
+  animation: fluidFlowUp 0.8s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+.fluid-circle {
+  animation: circleActivate 0.6s ease-in-out forwards;
+  animation-delay: 0.4s;
+}
+
+/* Group hover management - disable group hover when chart is hovered */
+.group:has(.chart-container:hover):hover {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Rethink Sans', sans-serif;
+  background-color: #eef6f0;
+}
+
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* Main Layout Container - Unified Scrolling */
+.main-layout-container {
+  /* Remove fixed height constraints that could cause scrolling conflicts */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cdd7cf;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #202424;
+}
+
+/* Custom CSS for consistent styling */
+.eco-card {
+  background: #effff6;
+  border-radius: 10px;
+  box-shadow: 0px 0px 50px -25px rgba(0,0,0,0.1);
+}
+
+.eco-card-blue {
+  background: #e1fdff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 50px -25px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background: #91ffd1;
+  border: 1px solid #202424;
+  border-radius: 100px;
+  padding: 5px 10px;
+  color: #202424;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #202424;
+  color: #91ffd1;
+}
+
+.filter-btn {
+  background: #eef6f0;
+  border: 1px solid #202424;
+  border-radius: 100px;
+  padding: 5px;
+  width: 60px;
+  color: #202424;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active {
+  background: #202424;
+  color: #eef6f0;
+}
+
+.impact-bar {
+  height: 20px;
+  border-radius: 15px;
+  width: 130px;
+}
+
+.impact-bar.trees {
+  background: #b3ffac;
+}
+
+.impact-bar.algae {
+  background: #c2edff;
+}
+
+/* Dropdown Arrow - Reusable across the app */
+.dropdown-arrow {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Blue connector circle on planting card */
+.planting-card-connector {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.small-connector-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #3F9FFF;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(63, 159, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.small-connector-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(63, 159, 255, 0.5);
+}
+
+/* Hidden scrollbar utilities */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+.scrollbar-show:hover {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: auto; /* Internet Explorer 10+ */
+}
+
+.scrollbar-show:hover::-webkit-scrollbar {
+  display: block; /* WebKit */
+  width: 4px;
+}
+
+.scrollbar-show:hover::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollbar-show:hover::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.scrollbar-show:hover::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Marquee animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+/* Scrollable content styles for plantation portal */
+.scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color: #9CA3AF;
+  border-radius: 3px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background-color: #6B7280;
+}
+
+/* Spin animation for revolving logo */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slow spin animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Custom CSS for the error bubble triangle */
+.error-bubble::after {
+  content: '';
+  position: absolute;
+  /* Position the triangle at the bottom center of the div */
+  top: -6px; /* Adjust this value to control overlap */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* The CSS Border Trick for a triangle */
+  width: 0;
+  height: 0;
+
+  /* The color of the triangle must match the background of the div: #FFC085 */
+  border-left: 6px solid transparent; /* Half the width of the base */
+  border-right: 6px solid transparent; /* Half the width of the base */
+  border-bottom: 6px solid #FFC085; /* The height and color of the triangle */
+}
+
+/* React Tel Input hover styles - DISABLED */
+.react-tel-input .flag-dropdown {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+.react-tel-input .selected-flag {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+.react-tel-input .flag-dropdown:hover,
+.react-tel-input .selected-flag:hover {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* Original React Tel Input hover styles (now disabled) */
