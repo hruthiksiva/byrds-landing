@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Startup",
+    "id": "startup"
+  },
+  {
+    "name": "Enterprise",
+    "id": "enterprise"
+  },
+  {
+    "name": "Public Sector",
+    "id": "public-sector"
+  },
+  {
+    "name": "NPO / NGO / Charity",
+    "id": "npo-ngo-charity"
+  },
+  {
+    "name": "Government",
+    "id": "government"
+  }
+]

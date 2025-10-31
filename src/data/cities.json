@@ -1,0 +1,12 @@
+[
+  { "city": "New York", "state": "New York", "country": "USA" },
+  { "city": "Los Angeles", "state": "California", "country": "USA" },
+  { "city": "London", "state": "England", "country": "UK" },
+  { "city": "Tokyo", "state": "Tokyo Prefecture", "country": "Japan" },
+  { "city": "Paris", "state": "Île-de-France", "country": "France" },
+  { "city": "Berlin", "state": "Berlin", "country": "Germany" },
+  { "city": "Toronto", "state": "Ontario", "country": "Canada" },
+  { "city": "Sydney", "state": "New South Wales", "country": "Australia" },
+  { "city": "Mumbai", "state": "Maharashtra", "country": "India" },
+  { "city": "Bengaluru", "state": "Karnataka", "country": "India" }
+]

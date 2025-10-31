@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Agriculture & Farming",
+    "id": "agriculture-farming"
+  },
+  {
+    "name": "Manufacturing & Industrial",
+    "id": "manufacturing-industrial"
+  },
+  {
+    "name": "Energy & Utilities",
+    "id": "energy-utilities"
+  },
+  {
+    "name": "Construction & Real Estate",
+    "id": "construction-real-estate"
+  },
+  {
+    "name": "Retail & E-Commerce",
+    "id": "retail-ecommerce"
+  },
+  {
+    "name": "Food & Beverage",
+    "id": "food-beverage"
+  },
+  {
+    "name": "Healthcare & Life Sciences",
+    "id": "healthcare-life-sciences"
+  },
+  {
+    "name": "Information Technology",
+    "id": "information-technology"
+  },
+  {
+    "name": "Telecommunications",
+    "id": "telecommunications"
+  },
+  {
+    "name": "Financial Services & Fintech",
+    "id": "financial-services-fintech"
+  },
+  {
+    "name": "Logistics & Supply Chain",
+    "id": "logistics-supply-chain"
+  },
+  {
+    "name": "Media & Entertainment",
+    "id": "media-entertainment"
+  },
+  {
+    "name": "Education & Training",
+    "id": "education-training"
+  },
+  {
+    "name": "Hospitality, Travel & Tourism",
+    "id": "hospitality-travel-tourism"
+  },
+  {
+    "name": "Professional Services",
+    "id": "professional-services"
+  },
+  {
+    "name": "Other sectors not part of the above list",
+    "id": "other-sectors",
+    "isOther": true
+  }
+]
