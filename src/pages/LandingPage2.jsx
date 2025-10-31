@@ -453,7 +453,7 @@ const LandingPage2 = () => {
           <div className="absolute -left-[50px] top-[-150px] w-[550px] h-[280px] hidden sm:block">
             <img
               className="w-full h-auto object-contain"
-              src="/assets/Sustainable-Synergy/pink-element-dividing-text.svg"
+              src="/assets/sustainable-synergy/pink-element-dividing-text.svg"
               alt="Sustainable Synergy"
             />
           </div>
@@ -618,7 +618,7 @@ const LandingPage2 = () => {
       <div className="relative  my-[90px] sm:mt-[150px] left-[75px] sm:left-[600px]">
         <img
           className="w-[319.89px] h-[129px] sm:w-[700px] sm:h-auto object-contain"
-          src="/assets/Sustainable-Synergy/green-element-dividing-text.svg"
+          src="/assets/sustainable-synergy/green-element-dividing-text.svg"
           alt="Green Element Dividing Text"
         />
       </div>
@@ -686,7 +686,7 @@ const LandingPage2 = () => {
         />
         <img
           className="w-full h-full object-cover border-[10px] border-[#eef6f0] hidden sm:block"
-          src="/assets/Sustainable-Synergy/ASSIMILATE.SVG"
+          src="/assets/sustainable-synergy/ASSIMILATE.SVG"
           alt="Assimilate"
         />
       </div>

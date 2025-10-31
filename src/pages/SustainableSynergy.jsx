@@ -278,7 +278,7 @@ const SustainableSynergy = () => {
             }}
           >
             <source
-              src="/assets/Sustainable-Synergy/hero-video.mp4"
+              src="/assets/sustainable-synergy/hero-video.mp4"
               type="video/mp4"
             />
           </video>
@@ -300,7 +300,7 @@ const SustainableSynergy = () => {
             }}
           >
             <source
-              src="/assets/Sustainable-Synergy/hero-video.mp4"
+              src="/assets/sustainable-synergy/hero-video.mp4"
               type="video/mp4"
             />
           </video>
@@ -669,7 +669,7 @@ const SustainableSynergy = () => {
           <img
             alt=""
             className="w-[116.8px] h-[125px] sm:w-[174px] sm:h-[180px] "
-            src="/assets/Sustainable-Synergy/purple-butterfly.png"
+            src="/assets/sustainable-synergy/purple-butterfly.png"
           />
         </div>
 
@@ -703,7 +703,7 @@ const SustainableSynergy = () => {
           <img
             alt=""
             className="sm:w-[185px] w-[68px] sm:h-[190px] h-[75px] object-cover"
-            src="/assets/Sustainable-Synergy/purple-butterfly.png"
+            src="/assets/sustainable-synergy/purple-butterfly.png"
           />
         </div>
 
@@ -711,7 +711,7 @@ const SustainableSynergy = () => {
           <img
             alt=""
             className="sm:w-[98px] lg: w-[45px] sm:h-[131px] h-[70px] object-cover"
-            src="/assets/Sustainable-Synergy/purple-butterfly.png"
+            src="/assets/sustainable-synergy/purple-butterfly.png"
           />
         </div>
 
@@ -719,7 +719,7 @@ const SustainableSynergy = () => {
           <img
             alt=""
             className="w-[284px] h-[136px] sm:w-auto sm:h-auto"
-            src="/assets/Sustainable-Synergy/first-sustainable-step.svg"
+            src="/assets/sustainable-synergy/first-sustainable-step.svg"
           />
         </div>
 
