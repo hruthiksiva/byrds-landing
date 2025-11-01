@@ -114,29 +114,32 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
     const isFormValid = otpValues.every(value => value !== '');
 
     return (
-        <div className="bg-[#eef6f0] min-h-screen w-full overflow-hidden relative">
+        <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden">
             {/* Radial Gradient Background */}
             <div
                 className="w-full h-full min-h-screen absolute inset-0"
                 style={{
-                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 1920 1080\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\'><stop stop-color=\\'rgba(56,156,244,1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(84,176,247,1)\\' offset=\\'0.125\\'/><stop stop-color=\\'rgba(112,195,250,1)\\' offset=\\'0.25\\'/><stop stop-color=\\'rgba(168,235,255,1)\\' offset=\\'0.5\\'/><stop stop-color=\\'rgba(224,255,227,1)\\' offset=\\'0.75\\'/><stop stop-color=\\'rgba(238,255,205,1)\\' offset=\\'1\\'/></radialGradient></defs></svg>')"
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\\'0 0 1920 1080\\\\' xmlns=\\\\'http://www.w3.org/2000/svg\\\\' preserveAspectRatio=\\\\'none\\\\'><rect x=\\\\'0\\\\' y=\\\\'0\\\\' height=\\\\'100%\\\\' width=\\\\'100%\\\\' fill=\\\\'url(%23grad)\\\\' opacity=\\\\'1\\\\'/><defs><radialGradient id=\\\\'grad\\\\' gradientUnits=\\\\'userSpaceOnUse\\\\' cx=\\\\'0\\\\' cy=\\\\'0\\\\' r=\\\\'10\\\\' gradientTransform=\\\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\\\'><stop stop-color=\\\\'rgba(56,156,244,1)\\\\' offset=\\\\'0\\\\'/><stop stop-color=\\\\'rgba(84,176,247,1)\\\\' offset=\\\\'0.125\\\\'/><stop stop-color=\\\\'rgba(112,195,250,1)\\\\' offset=\\\\'0.25\\\\'/><stop stop-color=\\\\'rgba(168,235,255,1)\\\\' offset=\\\\'0.5\\\\'/><stop stop-color=\\\\'rgba(224,255,227,1)\\\\' offset=\\\\'0.75\\\\'/><stop stop-color=\\\\'rgba(238,255,205,1)\\\\' offset=\\\\'1\\\\'/></radialGradient></defs></svg>')"
                 }}
             />
 
             {/* Byrds Logo */}
             <div className="relative gap-2 justify-start">
-                <div className="absolute top-[17px] left-[42px] z-50">
+                <button
+                    className="absolute top-[17px] left-[42px] hover:opacity-70 transition-opacity cursor-pointer z-50"
+                    type="button"
+                >
                     <img
                         src={assets.icons.logo}
                         alt="Logo"
-                        className="w-[67px] h-[37px]"
+                        className="w-[67px] h-[37px] pointer-events-none"
                     />
-                </div>
+                </button>
             </div>
 
             {/* OTP Form Container */}
-            <div className="relative flex flex-col items-center justify-center min-h-screen px-4">
-                <div className="max-w-[300px] w-full flex flex-col items-start">
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+                <div className="max-w-[228px] w-full flex flex-col items-start">
 
                     {/* Title */}
                     <div className="text-left">
@@ -146,11 +149,11 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                     </div>
 
                     {/* OTP Input Boxes */}
-                    <div className="flex items-center justify-start gap-[7px] w-full">
+                    <div className="flex items-center justify-start gap-[9px] w-full">
                         {otpValues.map((value, index) => (
                             <div key={index} className="flex items-center">
                                 <div
-                                    className="w-[55px] h-[70px] p-2 rounded-lg border border-solid flex justify-center items-center border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]"
+                                    className="w-[50px] h-[72px] p-2 rounded-lg border border-solid flex justify-center items-center border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]"
                                 >
                                     <input
                                         ref={el => inputRefs[index] = el}
@@ -171,11 +174,11 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                     </div>
 
                     {/* Confirm Button */}
-                    <div className="flex justify-start w-full mt-6 mb-4">
+                    <div className="flex justify-center w-full mt-6 mb-4">
                         <button
                             onClick={handleConfirm}
                             disabled={!isFormValid || isLoading}
-                            className={`px-[96px] py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
+                            className={`w-full py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
                                 isFormValid && !isLoading
                                     ? 'border-[#263A33] hover:bg-[#263A33] hover:text-white cursor-pointer'
                                     : 'border-[#263A33] opacity-25 cursor-not-allowed'
