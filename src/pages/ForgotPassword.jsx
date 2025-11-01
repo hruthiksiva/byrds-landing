@@ -7,6 +7,7 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [showOTP, setShowOTP] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   const handleBack = () => {
     navigate('/login');
@@ -16,7 +17,30 @@ const ForgotPassword = () => {
     navigate('/');
   };
 
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle email input change
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    // Clear error when user starts typing
+    if (emailError) {
+      setEmailError('');
+    }
+  };
+
   const handleConfirm = () => {
+    // Validate email before proceeding
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address');
+      return;
+    }
+
     console.log('Forgot Password form submitted:', { email });
     // Show OTP verification after email submission
     setShowOTP(true);
@@ -34,7 +58,7 @@ const ForgotPassword = () => {
   };
 
   // Check if form is valid for confirm button
-  const isFormValid = email.trim() !== '';
+  const isFormValid = email.trim() !== '' && validateEmail(email);
 
   // Show OTP verification if email was submitted
   if (showOTP) {
@@ -86,15 +110,20 @@ const ForgotPassword = () => {
         {/* Email Address */}
         <div className="mb-[26px] space-y-0.5 max-w-[432px]">
           <div className="text-[#263A33] text-[14px] font-extrabold font-['Rethink_Sans']">Email address</div>
-          <div className="w-full py-[10.5px] px-[12px]  rounded-lg outline outline-1 outline-offset-[-1px] outline-gray-800/60 inline-flex justify-start items-start gap-2.5 overflow-hidden">
+          <div className={`w-full py-[10.5px] px-[12px] rounded-lg outline outline-1 outline-offset-[-1px] ${emailError ? 'outline-red-500' : 'outline-gray-800/60'} inline-flex justify-start items-start gap-2.5 overflow-hidden`}>
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleEmailChange}
               placeholder="Enter email address"
               className="w-full bg-transparent justify-start text-gray-800/30 text-[11px] font-semibold font-['Rethink_Sans'] outline-none focus:text-gray-800 placeholder-gray-800/30"
             />
           </div>
+          {emailError && (
+            <div className="text-red-500 text-[10px] font-medium font-['Rethink_Sans'] mt-1">
+              {emailError}
+            </div>
+          )}
         </div>
 
         {/* Confirm Button */}
