@@ -1,16 +1,8 @@
 {
   "icons": {
-    "tree": "./assets/icons/tree.svg",
-    "algae": "./assets/icons/algae.svg",
-    "search": "./assets/icons/search.svg",
     "filter": "./assets/icons/filter.svg",
     "plus": "./assets/icons/plus.svg",
     "logo": "./assets/icons/logo.svg",
-    "profile": "./assets/icons/profile.svg",
-    "notification": "./assets/icons/notification.svg",
-    "bitcoin": "./assets/icons/bitcoin.png",
-    "info": "./assets/icons/info.svg",
-    "star": "./assets/icons/star.svg",
     "leftArrow": "./assets/icons/left-arrow.svg",
     "cross": "./assets/icons/cross.svg",
     "tick": "./assets/icons/tick.svg"

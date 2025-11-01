@@ -13,11 +13,33 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
         }
     }, []);
 
-    const handleOtpChange = (index, value) => {
-        // Only allow single digit
-        if (value.length > 1) return;
+    // Check if OTP is already started (has at least one value)
+    const isOtpStarted = () => {
+        return otpValues.some(value => value !== '');
+    };
 
-        // Only allow numbers
+    // Track if we're programmatically focusing (to avoid redirecting during auto-focus)
+    const isProgrammaticFocus = useRef(false);
+
+    // Handle OTP input focus - only allow focusing first empty box if OTP is not started
+    const handleOtpFocus = (index) => {
+        // If we're programmatically focusing, don't redirect
+        if (isProgrammaticFocus.current) {
+            isProgrammaticFocus.current = false;
+            return;
+        }
+
+        // If OTP is not started, only allow focusing on the first empty box (index 0)
+        if (!isOtpStarted()) {
+            if (index !== 0) {
+                inputRefs[0].current?.focus();
+            }
+        }
+    };
+
+    const handleOtpChange = (index, value) => {
+        // Only allow single digit and numbers only
+        if (value.length > 1) return;
         if (value !== '' && !/^\d$/.test(value)) return;
 
         const newOtpValues = [...otpValues];
@@ -26,7 +48,10 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
 
         // Auto-focus next input
         if (value !== '' && index < 3) {
-            inputRefs[index + 1].current?.focus();
+            setTimeout(() => {
+                isProgrammaticFocus.current = true;
+                inputRefs[index + 1].current?.focus();
+            }, 0);
         }
     };
 
@@ -35,6 +60,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
         if (e.key === 'Backspace') {
             if (otpValues[index] === '' && index > 0) {
                 // Move to previous input if current is empty
+                isProgrammaticFocus.current = true;
                 inputRefs[index - 1].current?.focus();
             } else {
                 // Clear current input
@@ -110,26 +136,28 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
 
             {/* OTP Form Container */}
             <div className="relative flex flex-col items-center justify-center min-h-screen px-4">
-                <div className="max-w-[300px] w-full flex flex-col items-center space-y-8">
+                <div className="max-w-[300px] w-full flex flex-col items-start">
 
                     {/* Title */}
                     <div className="text-left">
-                        <h1 className="text-[#263A33] text-[18px] font-extrabold font-['Rethink_Sans']">
+                        <h1 className="text-[#263A33] text-[14px] font-black font-['Rethink_Sans']">
                             Enter OTP
                         </h1>
                     </div>
 
                     {/* OTP Input Boxes */}
-                    <div className="flex items-center justify-center gap-[5px] w-full">
+                    <div className="flex items-center justify-start gap-[7px] w-full">
                         {otpValues.map((value, index) => (
                             <div key={index} className="flex items-center">
                                 <div
-                                    className="w-[32px] h-[50px] p-2 rounded-lg border border-solid flex justify-center items-center border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]"
+                                    className="w-[55px] h-[70px] p-2 rounded-lg border border-solid flex justify-center items-center border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]"
                                 >
                                     <input
-                                        ref={inputRefs[index]}
+                                        ref={el => inputRefs[index] = el}
                                         type="text"
                                         value={value}
+                                        placeholder=""
+                                        onFocus={() => handleOtpFocus(index)}
                                         onChange={(e) => handleOtpChange(index, e.target.value)}
                                         onKeyDown={(e) => handleKeyDown(index, e)}
                                         onPaste={index === 0 ? handlePaste : undefined}
@@ -143,11 +171,11 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                     </div>
 
                     {/* Confirm Button */}
-                    <div className="flex justify-start w-full">
+                    <div className="flex justify-start w-full mt-6 mb-4">
                         <button
                             onClick={handleConfirm}
                             disabled={!isFormValid || isLoading}
-                            className={`px-[60px] py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
+                            className={`px-[96px] py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
                                 isFormValid && !isLoading
                                     ? 'border-[#263A33] hover:bg-[#263A33] hover:text-white cursor-pointer'
                                     : 'border-[#263A33] opacity-25 cursor-not-allowed'
@@ -160,7 +188,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                     </div>
 
                     {/* Resend OTP Link */}
-                    <div className="text-center">
+                    <div className="w-full flex justify-center">
                         <button
                             onClick={handleResendOTP}
                             className="text-[#263A33] text-[12px] font-medium font-['Rethink_Sans'] hover:underline transition-all"

@@ -70,7 +70,8 @@ const ForgotPassword = () => {
                   </div>
 
       {/* Form Container */}
-      <div className="absolute  right-[190px] bottom-[133px] transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[540px] px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="w-full max-w-[432px]">
         {/* Page Title with Back Arrow */}
         <div className="relative mb-6">
           <button 
@@ -79,7 +80,7 @@ const ForgotPassword = () => {
           >
             <img src={assets.icons.leftArrow} alt="Back" className="w-full h-full" />
           </button>
-          <div className="text-[#263A33] text-[14px] font-extrabold font-['Rethink_Sans']">Forgot Password</div>
+          <div onClick={handleBack} className="text-[#263A33] text-[14px] font-extrabold font-['Rethink_Sans'] hover:cursor-pointer">Forgot Password</div>
         </div>
 
         {/* Email Address */}
@@ -97,7 +98,7 @@ const ForgotPassword = () => {
         </div>
 
         {/* Confirm Button */}
-        <div className="flex mr-[76px] justify-center">
+        <div className="flex justify-center">
           <button
             onClick={handleConfirm}
             disabled={!isFormValid}
@@ -109,6 +110,7 @@ const ForgotPassword = () => {
           >
             <div className="text-gray-800 text-[13.5px] font-bold font-['Rethink_Sans']">Confirm</div>
           </button>
+        </div>
         </div>
       </div>
     </div>

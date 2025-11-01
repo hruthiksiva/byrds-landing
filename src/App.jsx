@@ -23,24 +23,9 @@ function useAutoZoom() {
 
     const applyZoom = () => {
       const currentPath = window.location.pathname;
-      const loginRegisterPaths = ['/login', '/register', '/forgot-company-id', '/forgot-password', '/reset-password'];
-
-      // For login/register pages: only apply zoom for 2xl+ screens (1536px and above)
-      if (loginRegisterPaths.includes(currentPath)) {
-        // Only apply zoom for screens wider than 1536px (2xl and above)
-        if (window.innerWidth <= 1536) {
-          const root = document.getElementById('root');
-          if (root) {
-            root.style.transform = 'none';
-            root.style.transformOrigin = 'top left';
-            root.style.width = '100%';
-            root.style.height = '100vh';
-          }
-          return;
-        }
-
-        // Apply zoom for 2xl+ screens
-        const zoomFactor = getZoomFactor();
+      const zoomFactor = getZoomFactor();
+      const noZoomPaths = ['/login', '/register', '/forgot-company-id', '/forgot-password', '/reset-password'];
+      if (noZoomPaths.includes(currentPath)) {
         const root = document.getElementById('root');
         if (root) {
           root.style.transform = `scale(${zoomFactor})`;
@@ -62,8 +47,6 @@ function useAutoZoom() {
         }
         return;
       }
-
-      const zoomFactor = getZoomFactor();
       const root = document.getElementById('root');
       if (root) {
         root.style.transform = `scale(${zoomFactor})`;
@@ -86,6 +69,7 @@ function useAutoZoom() {
 
       // If only width changed, apply zoom
       applyZoom();
+      
     };
 
     window.addEventListener('resize', handleResize);

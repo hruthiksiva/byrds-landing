@@ -69,7 +69,8 @@ const ResetPassword = () => {
                       </button>
                   </div>
       {/* Form Container */}
-      <div className="absolute px-[55px]  left-1/2 top-[392px] transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[540px] ">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+        <div className="w-full max-w-[540px]">
         {/* Page Title with Back Arrow */}
         <div className="relative mb-6">
           <button 
@@ -302,6 +303,7 @@ const ResetPassword = () => {
           >
             <div className={`text-[13.5px] font-bold font-['Rethink_Sans'] ${isFormValid ? 'text-white' : 'text-gray-800'}`}>Confirm</div>
           </button>
+        </div>
         </div>
       </div>
     </div>

@@ -163,7 +163,7 @@ const LoginPage = () => {
       </div>
 
       {/* Form Container */}
-      <div className="relative pt-[58px] z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
         <div className="w-full max-w-[430px]">
           {/* Login to */}
           <div className="text-[#263A33] text-[14px] font-extrabold font-rethink-sans">Login to</div>

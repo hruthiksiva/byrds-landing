@@ -55,7 +55,7 @@ const ForgotCompanyIdPage = () => {
       <Logo />
 
       {/* Form Container */}
-      <div className="relative pt-[58px] z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
         <div className="relative w-full max-w-[462px]">
           {/* Page Title with Back Arrow */}
           <div className="  relative mb-[25px]">
