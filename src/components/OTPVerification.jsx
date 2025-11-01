@@ -176,13 +176,13 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                         <button
                             onClick={handleConfirm}
                             disabled={!isFormValid || isLoading}
-                            className={`w-full py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
+                            className={`group w-full py-[10px] h-[45px] rounded-[9px] border border-solid transition-all ${
                                 isFormValid && !isLoading
-                                    ? 'border-[#263A33] hover:bg-[#263A33] hover:text-white cursor-pointer'
+                                    ? 'border-[#263A33] hover:bg-[#263A33] cursor-pointer'
                                     : 'border-[#263A33] opacity-25 cursor-not-allowed'
                             }`}
                         >
-                            <span className="text-[14px] font-extrabold font-['Rethink_Sans'] text-[#263A33]">
+                            <span className="text-[14px] font-extrabold font-['Rethink_Sans'] text-[#263A33] group-hover:text-white transition-colors">
                                 {isLoading ? 'Verifying...' : 'Confirm'}
                             </span>
                         </button>
