@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotCompanyIdPage from './pages/ForgotCompanyIdPage';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import './global.css'
 
 import { ModalProvider } from './context/ModalContext.jsx';
 

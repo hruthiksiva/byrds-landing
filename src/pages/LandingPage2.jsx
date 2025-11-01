@@ -270,12 +270,12 @@ const LandingPage2 = () => {
           {/* (G) element positioned below GREENER */}
           <div className="absolute top-[60px] sm:top-[120px] md:top-[220px] lg:top-[300px] flex items-start gap-[20px] sm:gap-[30px] md:gap-[35px] lg:gap-[50px] max-w-[530px]">
             <div
-              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[130px] text-justify flex-shrink-0 md:top-1/2 translate-y-1/2"
+              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[130px] text-justify flex-shrink-0 md:top-1/2 md:translate-y-1/2 lg:top-0 lg:translate-y-0"
               style={{ color: "rgba(23, 39, 38, 0.5)" }}
             >
               (G)
             </div>
-            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-right leading-4 sm:leading-5 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[280px]">
+            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-right leading-4 sm:leading-5 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[320px] lg:w-[280px]">
               Architect growth with sustainable strategies, renewable solutions,
               and eco-focused products—create impact, ensure compliance, and
               build a resilient future for our planet and your firm.
@@ -283,19 +283,19 @@ const LandingPage2 = () => {
           </div>
 
           {/* EASIER positioned at top right */}
-          <div className="absolute right-0 top-[90px] sm:top-[150px] md:top-[300px] lg:top-[290px] font-dm-sans font-extralight text-[40px] sm:text-[90px] md:text-[190px] lg:text-[200px] leading-[50px] sm:leading-[120px] md:leading-[150px] lg:leading-[260px] text-justify text-[#172726]">
+          <div className="absolute right-0 top-[90px] sm:top-[150px] md:top-[300px] lg:top-[290px] font-dm-sans font-extralight text-[40px] sm:text-[90px] md:text-[190px] lg:text-[180px] leading-[50px] sm:leading-[120px] md:leading-[150px] lg:leading-[260px] text-justify text-[#172726]">
             EASIER.
           </div>
 
           {/* (E) element positioned below EASIER */}
           <div className="absolute right-0 top-[150px] sm:top-[250px] md:top-[480px] lg:top-[530px] flex items-start gap-[20px] sm:gap-[30px] md:gap-[35px] lg:gap-[60px] max-w-[570px]">
             <div
-              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[130px] text-justify flex-shrink-0 md:top-1/2 translate-y-1/2"
+              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[130px] text-justify flex-shrink-0 md:top-1/2 md:translate-y-1/2 lg:top-0 lg:translate-y-0"
               style={{ color: "rgba(23, 39, 38, 0.5)" }}
             >
               (E)
             </div>
-            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-right leading-4 sm:leading-5 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[270px]">
+            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-right leading-4 sm:leading-5 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[270px] lg:w-[260px]">
               Byrds simplifies sustainability with seamless integration,
               intuitive dashboards, and effortless reporting—We ensure your
               business is greener, easier, and future-ready, while you focus on
@@ -309,15 +309,15 @@ const LandingPage2 = () => {
           </div>
 
           {/* (F) element positioned below FASTER */}
-          <div className="absolute left-[130px] sm:left-[150px] md:left-[0px] lg:left-[315px] top-[240px] sm:top-[350px] md:top-[720px] lg:top-[770px] flex items-start gap-[20px] sm:gap-[30px] md:justify-between lg:gap-[60px] max-w-[530px]">
-            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-left leading-3 sm:leading-4 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[320px] font-extralight">
+          <div className="absolute left-[130px] sm:left-[150px] md:left-[0px] lg:left-[315px] top-[240px] sm:top-[350px] md:top-[720px] lg:top-[770px] flex items-start gap-[20px] sm:gap-[30px] md:gap-[28 0px] lg:gap-[60px] md:justify-between md:max-w-[730px] lg:max-w-[530px]">
+            <p className="hidden sm:block text-[#1B2B2A] text-[10px] sm:text-[12px] md:text-[17px] lg:text-[14px] text-left leading-3 sm:leading-4 md:leading-7 flex-1 w-[200px] sm:w-[250px] md:w-[320px] lg:w-[260px] font-extralight">
               Greener in no time!
               <br /> From compliance to carbon reduction, our product enables
               faster integration, measurable results, and impactful progress
               toward a greener future.
             </p>
             <div
-              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[110px] text-justify flex-shrink-0 md:top-1/2 translate-y-1/2"
+              className="font-dm-sans font-extralight text-[20px] sm:text-[40px] md:text-[70px] lg:text-[100px] leading-[25px] sm:leading-[50px] md:leading-[65px] lg:leading-[110px] text-justify flex-shrink-0 md:top-1/2 md:translate-y-1/2 lg:top-0 lg:translate-y-0"
               style={{ color: "rgba(23, 39, 38, 0.5)" }}
             >
               (F)
