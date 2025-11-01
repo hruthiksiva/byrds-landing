@@ -4,12 +4,12 @@ import assets from '../data/assets.json';
 const OTPVerification = ({ onBack, onVerifySuccess }) => {
     const [otpValues, setOtpValues] = useState(['', '', '', '']);
     const [isLoading, setIsLoading] = useState(false);
-    const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+    const inputRefs = useRef([]);
 
     // Focus first input on mount
     useEffect(() => {
-        if (inputRefs[0].current) {
-            inputRefs[0].current.focus();
+        if (inputRefs.current[0]) {
+            inputRefs.current[0].focus();
         }
     }, []);
 
@@ -32,7 +32,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
         // If OTP is not started, only allow focusing on the first empty box (index 0)
         if (!isOtpStarted()) {
             if (index !== 0) {
-                inputRefs[0].current?.focus();
+                inputRefs.current[0]?.focus();
             }
         }
     };
@@ -50,7 +50,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
         if (value !== '' && index < 3) {
             setTimeout(() => {
                 isProgrammaticFocus.current = true;
-                inputRefs[index + 1].current?.focus();
+                inputRefs.current[index + 1]?.focus();
             }, 0);
         }
     };
@@ -61,7 +61,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
             if (otpValues[index] === '' && index > 0) {
                 // Move to previous input if current is empty
                 isProgrammaticFocus.current = true;
-                inputRefs[index - 1].current?.focus();
+                inputRefs.current[index - 1]?.focus();
             } else {
                 // Clear current input
                 const newOtpValues = [...otpValues];
@@ -88,7 +88,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
 
         // Focus the next empty input or last input
         const nextIndex = Math.min(pastedData.length, 3);
-        inputRefs[nextIndex].current?.focus();
+        inputRefs.current[nextIndex]?.focus();
     };
 
     const handleConfirm = () => {
@@ -106,7 +106,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
     const handleResendOTP = () => {
         // Clear current OTP
         setOtpValues(['', '', '', '']);
-        inputRefs[0].current?.focus();
+        inputRefs.current[0]?.focus();
         // Simulate resending OTP
         console.log('Resending OTP...');
     };
@@ -122,23 +122,21 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                     backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\\'0 0 1920 1080\\\\' xmlns=\\\\'http://www.w3.org/2000/svg\\\\' preserveAspectRatio=\\\\'none\\\\'><rect x=\\\\'0\\\\' y=\\\\'0\\\\' height=\\\\'100%\\\\' width=\\\\'100%\\\\' fill=\\\\'url(%23grad)\\\\' opacity=\\\\'1\\\\'/><defs><radialGradient id=\\\\'grad\\\\' gradientUnits=\\\\'userSpaceOnUse\\\\' cx=\\\\'0\\\\' cy=\\\\'0\\\\' r=\\\\'10\\\\' gradientTransform=\\\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\\\'><stop stop-color=\\\\'rgba(56,156,244,1)\\\\' offset=\\\\'0\\\\'/><stop stop-color=\\\\'rgba(84,176,247,1)\\\\' offset=\\\\'0.125\\\\'/><stop stop-color=\\\\'rgba(112,195,250,1)\\\\' offset=\\\\'0.25\\\\'/><stop stop-color=\\\\'rgba(168,235,255,1)\\\\' offset=\\\\'0.5\\\\'/><stop stop-color=\\\\'rgba(224,255,227,1)\\\\' offset=\\\\'0.75\\\\'/><stop stop-color=\\\\'rgba(238,255,205,1)\\\\' offset=\\\\'1\\\\'/></radialGradient></defs></svg>')"
                 }}
             />
+     <div className="relative gap-2 justify-start">
+                      <button
+                          className="absolute top-[17px] left-[42px] hover:opacity-70 transition-opacity cursor-pointer z-50"
+                          type="button"
+                      >
+                          <img
+                              src={assets.icons.logo}
+                              alt="Logo"
+                              className="w-[67px] h-[37px] pointer-events-none"
+                          />
+                      </button>
+                  </div>
 
-            {/* Byrds Logo */}
-            <div className="relative gap-2 justify-start">
-                <button
-                    className="absolute top-[17px] left-[42px] hover:opacity-70 transition-opacity cursor-pointer z-50"
-                    type="button"
-                >
-                    <img
-                        src={assets.icons.logo}
-                        alt="Logo"
-                        className="w-[67px] h-[37px] pointer-events-none"
-                    />
-                </button>
-            </div>
-
-            {/* OTP Form Container */}
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      {/* OTP Form Container */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
                 <div className="max-w-[228px] w-full flex flex-col items-start">
 
                     {/* Title */}
@@ -156,7 +154,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                                     className="w-[50px] h-[72px] p-2 rounded-lg border border-solid flex justify-center items-center border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]"
                                 >
                                     <input
-                                        ref={el => inputRefs[index] = el}
+                                        ref={el => inputRefs.current[index] = el}
                                         type="text"
                                         value={value}
                                         placeholder=""
