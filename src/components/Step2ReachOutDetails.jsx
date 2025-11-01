@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import countriesData from '../data/countries.json';
-import CountryDropdown from './countrydropdown';
+import CountryDropdown from './CountryDropdown';
 
 const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) => {
     const [errors, setErrors] = useState({});
