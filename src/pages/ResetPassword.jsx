@@ -150,7 +150,7 @@ const ResetPassword = () => {
           {/* Password Validation Criteria */}
           <div className="mt-3 space-y-3.5">
             {/* Row 1 */}
-            <div className="flex gap-[148px] whitespace-nowrap">
+            <div className="flex justify-between pr-[3px]">
               <div className="flex ml-3 items-center gap-[5px]">
                 <div className="w-2 h-2 flex items-center justify-center">
                   <img 

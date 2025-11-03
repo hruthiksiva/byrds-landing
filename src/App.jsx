@@ -28,10 +28,10 @@ function useAutoZoom() {
       if (noZoomPaths.includes(currentPath)) {
         const root = document.getElementById('root');
         if (root) {
-          root.style.transform = `scale(${zoomFactor})`;
+          root.style.transform = 'none';
           root.style.transformOrigin = 'top left';
-          root.style.width = `${100 / zoomFactor}%`;
-          root.style.height = `${(100 / zoomFactor)}vh`;
+          root.style.width = '100%';
+          root.style.height = '100vh';
         }
         return;
       }
