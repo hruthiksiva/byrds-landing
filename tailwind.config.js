@@ -17,6 +17,9 @@ module.exports = {
       black: '900',
     },
     extend: {
+      screens: {
+        '3xl': '2000px',
+      },
       fontFamily: {
         'rethink': ['Rethink Sans', 'sans-serif'],
         'rethink-sans': ['Rethink Sans', 'sans-serif'],

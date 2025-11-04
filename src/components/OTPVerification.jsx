@@ -114,12 +114,12 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
     const isFormValid = otpValues.every(value => value !== '');
 
     return (
-        <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden">
+        <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden min-h-screen 3xl:h-screen 3xl:overflow-y-hidden">
             {/* Radial Gradient Background */}
             <div
                 className="w-full h-full min-h-screen absolute inset-0"
                 style={{
-                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\\'0 0 1920 1080\\\\' xmlns=\\\\'http://www.w3.org/2000/svg\\\\' preserveAspectRatio=\\\\'none\\\\'><rect x=\\\\'0\\\\' y=\\\\'0\\\\' height=\\\\'100%\\\\' width=\\\\'100%\\\\' fill=\\\\'url(%23grad)\\\\' opacity=\\\\'1\\\\'/><defs><radialGradient id=\\\\'grad\\\\' gradientUnits=\\\\'userSpaceOnUse\\\\' cx=\\\\'0\\\\' cy=\\\\'0\\\\' r=\\\\'10\\\\' gradientTransform=\\\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\\\'><stop stop-color=\\\\'rgba(56,156,244,1)\\\\' offset=\\\\'0\\\\'/><stop stop-color=\\\\'rgba(84,176,247,1)\\\\' offset=\\\\'0.125\\\\'/><stop stop-color=\\\\'rgba(112,195,250,1)\\\\' offset=\\\\'0.25\\\\'/><stop stop-color=\\\\'rgba(168,235,255,1)\\\\' offset=\\\\'0.5\\\\'/><stop stop-color=\\\\'rgba(224,255,227,1)\\\\' offset=\\\\'0.75\\\\'/><stop stop-color=\\\\'rgba(238,255,205,1)\\\\' offset=\\\\'1\\\\'/></radialGradient></defs></svg>')"
+                    backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 1920 1080\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\'><stop stop-color=\\'rgba(56,156,244,1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(84,176,247,1)\\' offset=\\'0.125\\'/><stop stop-color=\\'rgba(112,195,250,1)\\' offset=\\'0.25\\'/><stop stop-color=\\'rgba(168,235,255,1)\\' offset=\\'0.5\\'/><stop stop-color=\\'rgba(224,255,227,1)\\' offset=\\'0.75\\'/><stop stop-color=\\'rgba(238,255,205,1)\\' offset=\\'1\\'/></radialGradient></defs></svg>')"
                 }}
             />
      <div className="relative gap-2 justify-start">
@@ -136,7 +136,7 @@ const OTPVerification = ({ onBack, onVerifySuccess }) => {
                   </div>
 
       {/* OTP Form Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 sm:px-4 3xl:scale-125 3xl:origin-center">
                 <div className="max-w-[228px] w-full flex flex-col items-start">
 
                     {/* Title */}

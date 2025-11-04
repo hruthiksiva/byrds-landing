@@ -138,7 +138,7 @@ const LoginPage = () => {
 
 
   return (
-    <div className="bg-[#eef6f0] min-h-screen w-full  overflow-hidden">
+    <div className="bg-[#eef6f0] min-h-screen w-full overflow-hidden 3xl:h-screen 3xl:overflow-y-hidden">
       {/* Radial Gradient Background */}
       <div
         className="w-full h-full min-h-screen absolute  inset-0"
@@ -163,8 +163,8 @@ const LoginPage = () => {
       </div>
 
       {/* Form Container */}
-      <div className="relative pt-[58px] z-10 flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="w-full max-w-[430px]">
+      <div className="relative pt-[58px] z-10 flex flex-col items-center justify-center min-h-screen px-6 sm:px-4 3xl:scale-125 3xl:origin-center">
+        <div className="w-full max-w-[435px]">
           {/* Login to */}
           <div className="text-[#263A33] text-[14px] font-extrabold font-rethink-sans">Login to</div>
 
@@ -213,11 +213,11 @@ const LoginPage = () => {
             )}
 
             {/* Company ID Input Boxes */}
-            <div className="flex  items-center justify-center gap-[5px] w-full">
+            <div className="flex items-center justify-between gap-[4px] sm:gap-[5px] sm:justify-center w-full max-w-full overflow-hidden">
               {companyId.map((char, index) => (
-                <div key={index} className="flex items-center ">
+                <div key={index} className="flex items-center flex-shrink-0">
                   <div
-                    className={`w-[32px] h-[50px] p-2  rounded-lg border border-solid flex justify-center items-center ${companyIdError
+                    className={`w-[28px] sm:w-[32px] h-[50px] p-2 rounded-lg border border-solid flex justify-center items-center ${companyIdError
                       ? 'border-[rgba(255,0,0,0.6)]'
                       : 'border-[rgba(38,58,51,0.32)] focus-within:border-[#263A33]'
                       }`}
@@ -243,7 +243,7 @@ const LoginPage = () => {
                   </div>
                   {/* Add separators after 4th and 8th characters */}
                   {(index === 3 || index === 6) && (
-                    <div className="w-3 h-0.5 bg-gray-800 ml-[4px]" />
+                    <div className="w-2 sm:w-3 h-0.5 bg-gray-800 ml-[2px] sm:ml-[4px]" />
                   )}
                 </div>
               ))}

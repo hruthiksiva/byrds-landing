@@ -42,7 +42,7 @@ const ForgotCompanyIdPage = () => {
   const isFormValid = Object.values(formData).every(value => value.trim() !== '');
 
   return (
-    <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden">
+    <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden min-h-screen 3xl:h-screen 3xl:overflow-y-hidden">
       {/* Radial Gradient Background */}
       <div
         className="w-full h-full min-h-screen absolute inset-0"
@@ -55,7 +55,7 @@ const ForgotCompanyIdPage = () => {
       <Logo />
 
       {/* Form Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 sm:px-4 3xl:scale-125 3xl:origin-center">
         <div className="relative w-full max-w-[462px]">
           {/* Page Title with Back Arrow */}
           <div className="  relative mb-[25px]">

@@ -50,9 +50,9 @@ const ResetPassword = () => {
     hasNumber;
 
   return (
-    <div className="bg-[#eef6f0]  relative min-h-screen w-full overflow-hidden">
-      {/* Different Radial Gradient Background */}
-      <div className="w-full h-full min-w-[1920px] min-h-[1080px] left-[-150px] bottom-[-250px] absolute bg-[radial-gradient(ellipse_126.21%_118.48%_at_50.00%_100.00%,_#9FECDD_0%,_#F7FFD1_50%,_#FFF7CD_75%,_#FFEBCD_100%)]" />
+    <div className="bg-[#eef6f0] relative min-h-screen w-full overflow-hidden 3xl:h-screen 3xl:overflow-y-hidden">
+      {/* Responsive Radial Gradient Background */}
+      <div className="w-full h-full min-h-screen absolute inset-0 bg-[radial-gradient(ellipse_126.21%_118.48%_at_50.00%_100.00%,_#9FECDD_0%,_#F7FFD1_50%,_#FFF7CD_75%,_#FFEBCD_100%)]" />
       
       {/* Byrds Logo */}
       <div className="relative gap-2 justify-start">
@@ -69,17 +69,17 @@ const ResetPassword = () => {
                       </button>
                   </div>
       {/* Form Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 sm:px-4 3xl:scale-125 3xl:origin-center">
         <div className="w-full max-w-[540px]">
         {/* Page Title with Back Arrow */}
         <div className="relative mb-6">
-          <button 
+          <button
             onClick={handleBack}
             className="absolute -left-6 top-[5px] w-3 h-3 overflow-hidden hover:opacity-70 transition-opacity"
           >
             <img src={assets.icons.leftArrow} alt="Back" className="w-full h-full" />
           </button>
-          <div className="text-gray-800 text-[14px] font-extrabold font-['Rethink_Sans']">Reset Password</div>
+          <div onClick={handleBack} className="text-gray-800 text-[14px] font-extrabold font-['Rethink_Sans']">Reset Password</div>
         </div>
 
         {/* New Password */}

@@ -62,7 +62,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div className="bg-[#eef6f0] min-h-screen w-full overflow-hidden">
+        <div className="bg-[#eef6f0] min-h-screen w-full overflow-hidden 3xl:h-screen 3xl:overflow-y-hidden">
             {/* Radial Gradient Background */}
             <div
                 className="w-full h-full min-h-screen absolute inset-0"
@@ -87,10 +87,10 @@ const RegisterPage = () => {
             </div>
 
             {/* Form Container */}
-            <div className="relative  flex flex-col items-center justify-center  px-4">
-                <div className="max-w-[433px] w-full  flex flex-col">
+            <div className="relative flex flex-col items-center justify-center min-h-screen px-6 sm:px-4 3xl:scale-125 3xl:origin-center">
+                <div className="max-w-[433px] w-full flex flex-col">
                     {/* Progress Indicator */}
-                    <div className="relative top-[108px]">
+                    <div className="mb-[70px]">
                         <div className="flex items-center justify-center  ">
                             <div className="flex items-center ">
                                 {/* Step 1 Indicator */}
@@ -138,7 +138,7 @@ const RegisterPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-[178px]">
+                    <div>
                         {currentStep === 1 && (
                             <Step1CompanyDetails
                                 formData={formData}
