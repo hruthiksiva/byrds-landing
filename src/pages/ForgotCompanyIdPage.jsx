@@ -143,8 +143,8 @@ const ForgotCompanyIdPage = () => {
                   />
 
                   {formData.city && (
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
-                      <div className="w-[0.5px] h-2.5 bg-black opacity-50" />
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2.5">
+                      <div className="w-[0.5px] h-2 bg-black opacity-20" />
 
                       <button
                         onClick={() => {
@@ -157,9 +157,12 @@ const ForgotCompanyIdPage = () => {
                           setFilteredCities([]);
                           setShowDropdown(false);
                         }}
-                        className=" text-[#263A33] hover:text-black text-[14px] font-bold"
+                        className=" text-[#263A3338] hover:text-black text-[14px] font-bold"
                       >
-                        ×
+                        <svg width="5" height="5" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.75 6.75L6.75 0.75M0.75 0.75L6.75 6.75" stroke="#263A33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
                       </button>
 
                     </div>
@@ -167,21 +170,22 @@ const ForgotCompanyIdPage = () => {
                 </div>
 
                 {showDropdown && filteredCities.length > 0 && (
-                  <ul className="absolute z-10 top-[42px] left-0 w-full bg-transparent backdrop-blur-md border border-gray-800 rounded-lg shadow-md max-h-40 overflow-y-auto">
+                  <ul className="absolute z-10 top-[42px] left-0 w-full bg-[#93D6FA] backdrop-blur-md border border-[#263A3324] rounded-lg shadow-md max-h-[175px] overflow-y-auto">
                     {filteredCities.map((item, index) => (
-                      <li
-                        key={index}
-                        onClick={() => {
-                          setFormData({
-                            ...formData,
-                            city: item.city,
-                            stateCounty: item.state,
-                            country: item.country
-                          });
-                          setShowDropdown(false);
-                        }}
-                        className={`px-3 py-2 cursor-pointer text-[11.5px] border-b border-gray-800/20 font-['Rethink_Sans'] flex items-start gap-[4px] hover:bg-[#263A33]/5 transition rounded-md`}
-                      >
+                      <>
+                        <li
+                          key={index}
+                          onClick={() => {
+                            setFormData({
+                              ...formData,
+                              city: item.city,
+                              stateCounty: item.state,
+                              country: item.country
+                            });
+                            setShowDropdown(false);
+                          }}
+                          className={`px-3 py-2 cursor-pointer text-[11.5px] font-['Rethink_Sans'] flex items-start gap-[4px] hover:bg-[#263A33]/5`}
+                        >
                         {/*  Tick mark only when the typed city matches this one */}
                         <span
                           className={`transform translate-y-[-1.5px] mt-[5px] mr-1 transition-opacity duration-150 ${item.city.toLowerCase().startsWith(formData.city.toLowerCase()) && formData.city.trim() !== ''
@@ -211,9 +215,11 @@ const ForgotCompanyIdPage = () => {
                           <div className="font-semibold translate-y-[-1px]">{item.city}</div>
                           <div className="text-[10px] opacity-70">{item.state}, {item.country}</div>
                         </div>
-                      </li>
-
-
+                        </li>
+                        {index < filteredCities.length - 1 && (
+                          <div className="h-[0.5px] bg-[#263A3324] mx-3" />
+                        )}
+                      </>
                     ))}
                   </ul>
                 )}
@@ -225,7 +231,7 @@ const ForgotCompanyIdPage = () => {
                   type="text"
                   value={formData.stateCounty}
                   onChange={(e) => handleInputChange('stateCounty', e.target.value)}
-                  placeholder="State"
+                  placeholder="State/country"
                   className="w-full bg-transparent justify-start text-[#263A33] text-[11px] font-semibold font-['Rethink_Sans'] outline-none focus:text-gray-800 placeholder-gray-800/30"
                 />
               </div>
