@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotCompanyIdPage from './pages/ForgotCompanyIdPage';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import OTPVerificationPage from './pages/OTPVerificationPage';
 import './global.css'
 
 import { ModalProvider } from './context/ModalContext.jsx';
@@ -24,7 +25,7 @@ function useAutoZoom() {
     const applyZoom = () => {
       const currentPath = window.location.pathname;
       const zoomFactor = getZoomFactor();
-      const noZoomPaths = ['/login', '/register', '/forgot-company-id', '/forgot-password', '/reset-password'];
+      const noZoomPaths = ['/login', '/register', '/forgot-company-id', '/forgot-password', '/reset-password', '/otp'];
       if (noZoomPaths.includes(currentPath)) {
         const root = document.getElementById('root');
         if (root) {
@@ -91,6 +92,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-company-id" element={<ForgotCompanyIdPage />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/otp" element={<OTPVerificationPage />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/sustainable-synergy" element={<SustainableSynergy />} />
         </Routes>

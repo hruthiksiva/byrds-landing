@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import assets from '../data/assets.json';
-import OTPVerification from '../components/OTPVerification';
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [showOTP, setShowOTP] = useState(false);
   const [emailError, setEmailError] = useState('');
 
   const handleBack = () => {
@@ -42,33 +40,12 @@ const ForgotPassword = () => {
     }
 
     console.log('Forgot Password form submitted:', { email });
-    // Show OTP verification after email submission
-    setShowOTP(true);
-  };
-
-  // Handle OTP verification success
-  const handleOTPSuccess = () => {
-    // Navigate to login after successful OTP verification
-    navigate('/login');
-  };
-
-  // Handle back from OTP to email form
-  const handleOTPBack = () => {
-    setShowOTP(false);
+    // Navigate to OTP verification page with email in state
+    navigate('/otp', { state: { email } });
   };
 
   // Check if form is valid for confirm button
   const isFormValid = email.trim() !== '' && validateEmail(email);
-
-  // Show OTP verification if email was submitted
-  if (showOTP) {
-    return (
-      <OTPVerification
-        onBack={handleOTPBack}
-        onVerifySuccess={handleOTPSuccess}
-      />
-    );
-  }
 
   return (
     <div className="bg-[#eef6f0] relative h-full w-full overflow-hidden min-h-screen 3xl:h-screen 3xl:overflow-y-hidden">
