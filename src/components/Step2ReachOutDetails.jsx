@@ -5,7 +5,9 @@ import CountryDropdown from './CountryDropdown';
 const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) => {
     const [errors, setErrors] = useState({});
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-
+    const [showRecaptcha, setShowRecaptcha] = useState(false);
+    const recaptchaRef = useRef(null);
+    const recaptchaWidgetId = useRef(null);
 
     // Engagement style state
     const [selectedEngagementStyle, setSelectedEngagementStyle] = useState('');
@@ -27,9 +29,6 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
         } else if (!/^\d+$/.test(formData.phone.trim())) {
             newErrors.phone = 'Phone number must contain only numbers';
         }
-        if (!formData.countryCode.trim()) {
-            newErrors.countryCode = 'Country code is required';
-        }
         if (!formData.engagementStyle.trim()) {
             newErrors.engagementStyle = 'Engagement style is required';
         }
@@ -39,17 +38,24 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
     };
 
     const handleSubmit = () => {
-        console.log('handleSubmit called');
-        console.log('formData:', formData);
-        console.log('Validation result:', validateForm());
-
         if (validateForm()) {
-            console.log('Form is valid, showing popup');
-            // Show success popup instead of calling onSubmit
-            setShowSuccessPopup(true);
-        } else {
-            console.log('Form validation failed');
+            // Show reCAPTCHA popup
+            setShowRecaptcha(true);
         }
+    };
+
+    const handleRecaptchaSuccess = (token) => {
+        // Hide reCAPTCHA and show success popup
+        setShowRecaptcha(false);
+        setShowSuccessPopup(true);
+    };
+
+    const handleRecaptchaExpired = () => {
+        setShowRecaptcha(false);
+    };
+
+    const handleRecaptchaError = () => {
+        setShowRecaptcha(false);
     };
 
     // Handlers for the CountryDropdown component
@@ -74,12 +80,66 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
         onFormDataChange('engagementStyle', style);
     };
 
+    // Check if form is complete (for button state)
+    const isFormComplete = () => {
+        const firstName = formData.firstName?.trim();
+        const email = formData.email?.trim();
+        const phone = formData.phone?.trim();
+        const engagementStyle = formData.engagementStyle?.trim();
+
+        return !!(firstName && email && phone && engagementStyle);
+    };
+
     // Sync selectedEngagementStyle with formData on mount
     useEffect(() => {
         if (formData.engagementStyle) {
             setSelectedEngagementStyle(formData.engagementStyle);
         }
     }, [formData.engagementStyle]);
+
+    // Handle reCAPTCHA rendering and cleanup
+    useEffect(() => {
+        if (showRecaptcha && recaptchaRef.current && window.grecaptcha) {
+            // Wait for grecaptcha to be ready
+            const renderRecaptcha = () => {
+                try {
+                    // Reset if already rendered
+                    if (recaptchaWidgetId.current !== null) {
+                        window.grecaptcha.reset(recaptchaWidgetId.current);
+                    } else {
+                        // Render new reCAPTCHA
+                        recaptchaWidgetId.current = window.grecaptcha.render(recaptchaRef.current, {
+                            sitekey: '6LdNpgosAAAAAPVhWuo-4AuiXBYqNQ6lBt0oBZ-6',
+                            callback: handleRecaptchaSuccess,
+                            'expired-callback': handleRecaptchaExpired,
+                            'error-callback': handleRecaptchaError
+                        });
+                    }
+                } catch (error) {
+                    console.error('reCAPTCHA render error:', error);
+                }
+            };
+
+            // Check if grecaptcha is ready
+            if (window.grecaptcha.render) {
+                renderRecaptcha();
+            } else {
+                // Wait for grecaptcha to load
+                window.grecaptcha.ready(renderRecaptcha);
+            }
+        }
+
+        // Cleanup function
+        return () => {
+            if (recaptchaWidgetId.current !== null && window.grecaptcha) {
+                try {
+                    window.grecaptcha.reset(recaptchaWidgetId.current);
+                } catch (error) {
+                    console.error('reCAPTCHA cleanup error:', error);
+                }
+            }
+        };
+    }, [showRecaptcha]);
 
 
     return (
@@ -253,17 +313,45 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
 
                 <button
                     onClick={handleSubmit}
-                    disabled={!formData.firstName || !formData.email || !formData.phone || !formData.countryCode || !formData.engagementStyle}
-                    className={`h-10 flex-1 p-2 rounded-[9px] border text-[14px] font-extrabold font-rethink-san border-solid flex items-center justify-center gap-2.5 transition-all text-[#263A33] ${!formData.firstName || !formData.email || !formData.phone || !formData.countryCode || !formData.engagementStyle
+                    disabled={!isFormComplete()}
+                    className={`h-10 flex-1 p-2 rounded-[9px] border text-[14px] font-extrabold font-rethink-san border-solid flex items-center justify-center gap-2.5 transition-all text-[#263A33] ${!isFormComplete()
                         ? 'border-[#263A33] opacity-25 cursor-not-allowed'
                         : 'border-[#263A33] hover:bg-[#263A33] hover:text-[#FFFFFF]'
                         }`}
                 >
-                    
+
                         Express Interest
-                    
+
                 </button>
             </div>
+
+            {/* reCAPTCHA Popup Overlay */}
+            {showRecaptcha && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                    <div className="relative bg-white rounded-lg p-8 shadow-xl">
+                        <button
+                            onClick={() => {
+                                setShowRecaptcha(false);
+                                // Reset reCAPTCHA widget
+                                if (recaptchaWidgetId.current !== null && window.grecaptcha) {
+                                    try {
+                                        window.grecaptcha.reset(recaptchaWidgetId.current);
+                                    } catch (error) {
+                                        console.error('reCAPTCHA reset error:', error);
+                                    }
+                                }
+                            }}
+                            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+                            aria-label="Close"
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </button>
+                        <div ref={recaptchaRef}></div>
+                    </div>
+                </div>
+            )}
 
             {/* Success Popup Overlay */}
             {showSuccessPopup && (
