@@ -546,7 +546,7 @@ const Step1CompanyDetails = ({ formData, onFormDataChange, onNext }) => {
                             onMouseDown={handleSliderMouseDown}
                         >
                             <div className="relative w-[13px] h-[13px]">
-                                <div className="absolute inset-0 border border-black rounded-full flex items-center justify-center">
+                                <div className="w-full h-full inset-0 border border-black rounded-full flex items-center justify-center">
                                     <div className="p-[7px] pl-[1px] pt-[1px] rounded-full bg-black">
                                     </div>
                                 </div>
