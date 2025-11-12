@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import countriesData from '../data/countries.json';
 import CountryDropdown from './CountryDropdown';
 
 const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) => {
+    const navigate = useNavigate();
     const [errors, setErrors] = useState({});
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [showRecaptcha, setShowRecaptcha] = useState(false);
@@ -140,6 +142,19 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
             }
         };
     }, [showRecaptcha]);
+
+    // Handle success popup auto-navigation
+    useEffect(() => {
+        if (showSuccessPopup) {
+            // Navigate to login page after 3 seconds
+            const timer = setTimeout(() => {
+                navigate('/login');
+            }, 3000);
+
+            // Cleanup timer on unmount
+            return () => clearTimeout(timer);
+        }
+    }, [showSuccessPopup, navigate]);
 
 
     return (
@@ -300,7 +315,7 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex items-center pt-[30px] gap-[11px]">
+            <div className="flex items-center gap-[11px]">
                 <button
                     onClick={onBack}
                     className="w-10 h-10 rounded-[9px] border border-solid border-[#263A33] flex items-center justify-center hover:bg-[rgba(38,58,51,0.1)] transition-colors"
@@ -327,7 +342,10 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
 
             {/* reCAPTCHA Popup Overlay */}
             {showRecaptcha && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                <div
+                    className="fixed inset-0 w-screen h-screen z-50 flex items-center justify-center bg-black/50"
+                    style={{ margin: 0, padding: 0, top: 0, left: 0, right: 0, bottom: 0 }}
+                >
                     <div className="relative bg-white rounded-lg p-8 shadow-xl">
                         <button
                             onClick={() => {
@@ -355,11 +373,20 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
 
             {/* Success Popup Overlay */}
             {showSuccessPopup && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                <div
+                    className="fixed inset-0 w-screen h-screen z-50 flex items-center justify-center"
+                    style={{ margin: 0, padding: 0, top: 0, left: 0, right: 0, bottom: 0 }}
+                >
                     {/* Background Image */}
                     <div
                         className="fixed inset-0 w-screen h-screen"
                         style={{
+                            margin: 0,
+                            padding: 0,
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
                             backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 1920 1080\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(-0.0000071489 -155.96 154.7 -0.0000070914 960 1178.5)\\'><stop stop-color=\\'rgba(210,255,175,1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(206,255,188,1)\\' offset=\\'0.5\\'/><stop stop-color=\\'rgba(237,249,210,1)\\' offset=\\'0.75\\'/><stop stop-color=\\'rgba(181,223,233,1)\\' offset=\\'0.875\\'/><stop stop-color=\\'rgba(125,196,255,1)\\' offset=\\'1\\'/></radialGradient></defs></svg>')",
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
@@ -368,11 +395,11 @@ const Step2ReachOutDetails = ({ formData, onFormDataChange, onBack, onSubmit }) 
                     />
 
                     {/* Byrds Logo */}
-                    <div className="absolute top-[0px] left-[26px] z-10">
+                    <div className="absolute top-[17px] left-[42px] z-10">
                         <img
                             src="/assets/icons/logo.svg"
                             alt="Logo"
-                            className="w-[60.106px] h-[30px]"
+                            className="w-[67px] h-[37px]"
                         />
                     </div>
 
